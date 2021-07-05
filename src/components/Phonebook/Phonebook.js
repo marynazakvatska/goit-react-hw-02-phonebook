@@ -22,8 +22,7 @@ class Phonebook extends React.Component {
 /*      formSubmitHandler = data => {
        
          console.log(data);
-          
-    
+     
     } 
  */
     addContact = e => {
@@ -63,7 +62,7 @@ class Phonebook extends React.Component {
             <h2>Contacts</h2>
              <Filter value={filter} onChange={this.changeFilter} />
             
-            <ContactList clients={visibleContacts}/>
+            <ContactList contacts={visibleContacts}/>
             
 
 
