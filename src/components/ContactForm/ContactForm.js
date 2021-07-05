@@ -1,6 +1,5 @@
 import React from 'react';
 import './ContactForm.module.css';
-/* import Section from '../Section/Section'; */
 import shortid from 'shortid'
 
 class ContactForm extends React.Component {
@@ -15,19 +14,18 @@ class ContactForm extends React.Component {
 
     handleChange = e => {
        
-      /* const { name, value } = e.currentTarget; */
-      const value = e.target.value;
-      const name = e.target.name;
+      const { name, value } = e.currentTarget;
+    /*   const value = e.target.value;
+      const name = e.target.name; */
         this.setState({ [name]: value });
     }
     
   handleSubmit = e => {
     e.preventDefault();
     console.log(this.state.name)
-    this.props.onSubmit(this.state.name)
+    this.props.onSubmit(this.state)
   
-    
-     /*    this.reset(); */
+        this.reset();
     }
  
     reset = () => {
@@ -35,11 +33,12 @@ class ContactForm extends React.Component {
 }
 
   render() {
- const { name, number } = this.state; 
+
+
     return (
    <div>
  <form onSubmit={this.handleSubmit}>
-<label htmlFor="this.nameInputId">
+          <label htmlFor={this.nameInputId}>
  Name <input
   type="text"
   name="name"
@@ -53,7 +52,7 @@ value={this.state.name}
                     </label>
 
 
-     <label htmlFor="this.numberInputId">
+          <label htmlFor={this.numberInputId}>
  Number <input
   type="tel"
   name="number"
@@ -66,7 +65,7 @@ value={this.state.name}
 />
           </label>
 
-            <button type="button" >Add contact</button>
+            <button type="submit" >Add contact</button>
         </form>
        
    

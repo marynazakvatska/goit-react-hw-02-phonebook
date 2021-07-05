@@ -33,8 +33,11 @@ class Phonebook extends React.Component {
             name: e.name,
             number: e.number,
         }
-        this.setState(prevState => ({
+       /*  this.setState(prevState => ({
             contacts: [contact,...prevState.contacts],
+        })) */
+        this.setState(({ contacts }) => ({
+          contacts: [contact, ...contacts],
         }))
     }
 
