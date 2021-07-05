@@ -19,12 +19,13 @@ class Phonebook extends React.Component {
 
     }
 
-/*      formSubmitHandler = data => {
-       
-         console.log(data);
-     
-    } 
- */
+    deleteContact = contactId => {
+        this.setState(prevState => ({
+        contacts: prevState.contacts.filter(contact => contact.id !== contactId)
+    }))
+}
+
+
     addContact = e => {
         const { contacts } = this.state;
         console.log({ contacts });
@@ -33,9 +34,7 @@ class Phonebook extends React.Component {
             name: e.name,
             number: e.number,
         }
-       /*  this.setState(prevState => ({
-            contacts: [contact,...prevState.contacts],
-        })) */
+       
         this.setState(({ contacts }) => ({
           contacts: [contact, ...contacts],
         }))
@@ -65,7 +64,7 @@ class Phonebook extends React.Component {
             <h2>Contacts</h2>
              <Filter value={filter} onChange={this.changeFilter} />
             
-            <ContactList contacts={visibleContacts}/>
+            <ContactList contacts={visibleContacts} onDeleteContact={ this.deleteContact}/>
             
 
 

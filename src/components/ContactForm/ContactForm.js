@@ -67,8 +67,6 @@ value={this.state.name}
 
             <button type="submit" >Add contact</button>
         </form>
-       
-   
            </div>
  )
   }
