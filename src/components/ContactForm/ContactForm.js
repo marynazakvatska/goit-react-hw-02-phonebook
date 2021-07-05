@@ -25,7 +25,7 @@ class ContactForm extends React.Component {
     console.log(this.state.name)
     this.props.onSubmit(this.state)
   
-        this.reset();
+  this.reset();
     }
  
     reset = () => {
@@ -33,8 +33,6 @@ class ContactForm extends React.Component {
 }
 
   render() {
-
-
     return (
    <div>
  <form onSubmit={this.handleSubmit}>

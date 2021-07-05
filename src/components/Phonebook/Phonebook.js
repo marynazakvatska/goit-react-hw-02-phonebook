@@ -1,11 +1,10 @@
 import React from 'react';
 import './Phonebook.module.css';
-/* import Section from '../Section/Section'; */
 import ContactForm from '../ContactForm/ContactForm';
 import ContactList from '../ContactLIst/ContactList';
-/* import { number } from 'prop-types'; */
 import shortid from 'shortid';
 import Filter from '../Filter/Filter';
+import s from './Phonebook.module.css';
 
 
 class Phonebook extends React.Component {
@@ -25,6 +24,12 @@ class Phonebook extends React.Component {
     }))
 }
 
+     sameInclude = (contact, contacts) =>
+    contacts.find(cont =>
+      cont.name.toLocaleLowerCase().includes(contact.name.toLocaleLowerCase()) ,
+    );
+    
+    
 
     addContact = e => {
         const { contacts } = this.state;
@@ -35,7 +40,9 @@ class Phonebook extends React.Component {
             number: e.number,
         }
        
-        this.setState(({ contacts }) => ({
+        this.sameInclude(contact, contacts)
+      ? alert(`${contact.name} is already in your list`)
+      : this.setState(({ contacts }) => ({
           contacts: [contact, ...contacts],
         }))
     }
