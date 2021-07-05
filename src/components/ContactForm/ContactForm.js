@@ -35,7 +35,7 @@ class ContactForm extends React.Component {
 }
 
   render() {
-   /*  const { name, number } = this.state; */
+ const { name, number } = this.state; 
     return (
    <div>
  <form onSubmit={this.handleSubmit}>
@@ -67,7 +67,8 @@ value={this.state.name}
           </label>
 
             <button type="button" >Add contact</button>
-   </form>
+        </form>
+       
    
            </div>
  )

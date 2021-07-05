@@ -4,7 +4,8 @@ import './Phonebook.module.css';
 import ContactForm from '../ContactForm/ContactForm';
 import ContactList from '../ContactLIst/ContactList';
 /* import { number } from 'prop-types'; */
-import shortid from 'shortid'
+import shortid from 'shortid';
+import Filter from '../Filter/Filter';
 
 
 class Phonebook extends React.Component {
@@ -18,18 +19,18 @@ class Phonebook extends React.Component {
 
     }
 
-     formSubmitHandler = e => {
+/*      formSubmitHandler = data => {
        
-         console.log(e.target);
+         console.log(data);
           
-         this.setState((e) => { this.state.contacts.push(e.target.value) })
+    
     } 
-
+ */
     addContact = e => {
         const { contacts } = this.state;
         console.log({ contacts });
         const contact = {
-            id: shortid.generate(),
+       id: shortid.generate(), 
             name: e.name,
             number: e.number,
         }
@@ -38,17 +39,32 @@ class Phonebook extends React.Component {
         }))
     }
 
-
+    changeFilter = e => {
+        this.setState({filter: e.currentTarget.value})
+}
  
+    getVisibleClients = () => {
+        const { contacts, filter } = this.state;
+        const normalizedFilter = filter.toLowerCase();
+        return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter));
+
+    }
+    
   render() {
-   
+      const { contacts, filter } = this.state;
+
+      
+      const visibleContacts = this.getVisibleClients();
     return (
         <div>
             <h1>Phonebook</h1>
-            <ContactForm onSubmit={/* this.formSubmitHandler, */ this.addContact}/>
+            <ContactForm onSubmit={ this.addContact}/>
 
-             <h2>Contacts</h2>
-            <ContactList />
+            <h2>Contacts</h2>
+             <Filter value={filter} onChange={this.changeFilter} />
+            
+            <ContactList clients={visibleContacts}/>
+            
 
 
       </div>
