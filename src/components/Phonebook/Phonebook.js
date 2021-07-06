@@ -59,17 +59,17 @@ class Phonebook extends React.Component {
     }
     
   render() {
-      const { contacts, filter } = this.state;
+      const {  filter } = this.state;
 
       
       const visibleContacts = this.getVisibleClients();
     return (
-        <div>
-            <h1>Phonebook</h1>
+        <div className={s.section}>
+            <h1 className={s.title}>Phonebook</h1>
             <ContactForm onSubmit={ this.addContact}/>
 
-            <h2>Contacts</h2>
-             <Filter value={filter} onChange={this.changeFilter} />
+            <h2 className={s.title_contact}>Contacts</h2>
+             <Filter className={s.filter_label} value={filter} onChange={this.changeFilter} />
             
             <ContactList contacts={visibleContacts} onDeleteContact={ this.deleteContact}/>
             
